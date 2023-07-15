@@ -42,12 +42,11 @@ public class SecurityConfig {
                         .requestMatchers("/api/test").permitAll()
                         .requestMatchers("/auth/sign-in").permitAll()
                         .requestMatchers("/auth/refresh-token").permitAll()
-                        .requestMatchers("/auth/change-password").hasAnyRole("ADMIN")
-                        .requestMatchers("/demo-user").hasAnyRole("USER", "ADMIN")
-                        .requestMatchers("/demo-admin").hasAnyRole("ADMIN"))
+                        .requestMatchers("/auth/change-password").hasAnyRole("ADMIN"))
                 .httpBasic(Customizer.withDefaults())
                 .build();
     }
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
